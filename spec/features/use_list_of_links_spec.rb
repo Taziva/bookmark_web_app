@@ -1,11 +1,5 @@
 require 'spec_helper'
 
-# User Story 1
-#
-# As a time-pressed user
-# So that I can quickly go to web sites I regularly visit
-# I would like to see a list of links on the homepage
-
 feature 'User Story 1: see list of links' do
   scenario 'I can see existing links on the links' do
 

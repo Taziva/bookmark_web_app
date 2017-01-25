@@ -1,11 +1,5 @@
 require 'spec_helper'
 
-# User Story 2
-#
-# As a time-pressed user
-# So that I can save a website
-# I would like to add the site's address and title to my bookmark manager
-
 feature 'User Story 2: add a url with a name to the bookmark manager' do
   scenario 'I can save a website' do
 

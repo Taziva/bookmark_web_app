@@ -1,0 +1,11 @@
+<h1>Here are your current tags!</h1>
+
+<form action='/selection' method="post">
+  <ul>
+    <% @tags.each do |tag| %>
+      <li>
+        <input type="submit" name='filtered_tag' value=<%=tag.name%> >
+      </li>
+    <% end %>
+  </ul>
+</form>
