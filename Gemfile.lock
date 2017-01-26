@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
@@ -151,9 +151,3 @@ DEPENDENCIES
   rspec
   rspec-sinatra
   sinatra
-
-RUBY VERSION
-   ruby 2.2.3p173
-
-BUNDLED WITH
-   1.13.7
