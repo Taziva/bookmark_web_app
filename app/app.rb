@@ -22,28 +22,27 @@ class Bookmarks < Sinatra::Base
 
   post '/create' do
     link = Link.new(url: params[:url], title: params[:title])
-    tag = Tag.first_or_create(name: params[:tags].gsub(' ', '_').downcase)
-    link.tags << tag
+    params[:tags].split(', ').each do |t|
+      tag = Tag.first_or_create(name: t.gsub(' ', '_').downcase)
+      link.tags << tag
+    end
     link.save
     redirect '/links'
   end
 
   get '/tags' do
     @tags = Tag.all
-    puts @tags[0].name
     erb :tags
   end
 
   post '/selection' do
     session[:tag] = params[:filtered_tag]
-    redirect '/filter'
+    redirect '/tags/:tag'
   end
 
-  get '/filter' do
-    puts "*************", session[:tag]
-    @tag = Tag.first(name: session[:tag])
-    puts "-------------", @tag
-    @links = Link.get(@tag.name)
+  get '/tags/:tag' do
+    tag = Tag.first(name: session[:tag])
+    @links = tag ? tag.links : []
     erb :links
   end
 

@@ -8,7 +8,7 @@ feature 'User Story 4: filtering by tags' do
 
     fill_in(:title, with: 'BBC')
     fill_in(:url, with: 'www.bbc.co.uk')
-    fill_in(:tags, with: 'News')
+    fill_in(:tags, with: 'news')
 
     click_button ('Submit')
 
@@ -19,12 +19,13 @@ feature 'User Story 4: filtering by tags' do
     fill_in(:tags, with: 'Social Media')
 
     click_button ('Submit')
-
-    click_button ('News')
+    visit ('/tags')
+    click_button ('news')
 
     visit ('/tags/news')
-
-    expect(page).not_to have_content('Twitter')
-    expect(page).to have_content('BBC')
+    within 'ul#links' do
+      expect(page).not_to have_content('Twitter')
+      expect(page).to have_content('BBC')
+    end
   end
 end
