@@ -7,8 +7,14 @@ class Bookmarks < Sinatra::Base
 
   enable :sessions
 
+  helpers do
+    def current_user
+      User.first(id: session[:user_id])
+    end
+  end
+
   get '/' do
-    redirect '/signup'
+    redirect '/user/new'
   end
 
   get '/links' do
@@ -22,8 +28,9 @@ class Bookmarks < Sinatra::Base
   end
 
   post '/links' do
-    user = User.create(email: params[:email], password: params[:password])
+    user = User.first_or_create(email: params[:email], password: params[:password])
     session[:email] = params[:email]
+    session[:user_id] = user.id
     User.increment
     redirect '/links'
 
@@ -55,7 +62,7 @@ class Bookmarks < Sinatra::Base
     erb :links
   end
 
-  get '/signup' do
+  get '/user/new' do
     erb :signup
   end
   # start the server if ruby file executed directly
