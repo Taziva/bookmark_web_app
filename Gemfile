@@ -16,4 +16,5 @@ group :test_dev do
   gem 'coveralls', require: false
   gem 'rake'
   gem 'database_cleaner'
+  gem 'bcrypt'
 end

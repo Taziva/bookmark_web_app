@@ -1,12 +1,15 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
+require 'bcrypt'
 
 class User
 
+  include BCrypt
   include DataMapper::Resource
+
   property :id, Serial
   property :email,     String
-  property :password,   String
+  property :password,   BCryptHash
 
   class << self
     def increment
@@ -18,5 +21,7 @@ class User
       @count ||= 0
     end
   end
+
+
 
 end
