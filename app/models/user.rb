@@ -12,13 +12,9 @@ class User
   property :password,   BCryptHash
 
   class << self
-    def increment
-      @count ||=0
-      @count += 1
-    end
 
     def count
-      @count ||= 0
+      self.all.count
     end
   end
 

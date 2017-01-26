@@ -33,7 +33,6 @@ class Bookmarks < Sinatra::Base
     user = User.first_or_create(email: params[:email], password: params[:password])
     session[:email] = params[:email]
     session[:user_id] = user.id
-    User.increment
     redirect '/links'
 
   end
