@@ -12,11 +12,9 @@ class User
   property :password_digest,   Text
 
   class << self
-
     def count
       self.all.count
     end
   end
-
 
 end
