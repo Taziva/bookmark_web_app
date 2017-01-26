@@ -61,6 +61,7 @@ class Bookmarks < Sinatra::Base
   get '/tags/:tag' do
     tag = Tag.first(name: session[:tag])
     @links = tag ? tag.links : []
+    @email = session[:email]
     erb :links
   end
 

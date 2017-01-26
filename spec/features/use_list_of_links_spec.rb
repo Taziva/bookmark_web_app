@@ -4,7 +4,7 @@ feature 'User Story 1: see list of links' do
   scenario 'I can see existing links on the links' do
 
     Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
-
+    sign_in
     visit ('/links')
 
     expect(page.status_code).to eq 200

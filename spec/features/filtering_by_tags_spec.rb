@@ -2,6 +2,7 @@ require 'spec_helper'
 
 feature 'User Story 4: filtering by tags' do
   scenario 'I can filter my links by their tag' do
+    sign_in
     visit ('/links')
 
     click_link ('Add link')

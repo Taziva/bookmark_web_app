@@ -1,5 +1,6 @@
 feature 'User Story 3: tagging links' do
   scenario 'I can add a tag when entering a new link' do
+    sign_in
     visit ('/links')
 
     click_link ('Add link')

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'User Story 2: add a url with a name to the bookmark manager' do
   scenario 'I can save a website' do
-
+    sign_in
     visit ('/links')
 
     click_link ('Add link')
