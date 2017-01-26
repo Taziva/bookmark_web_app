@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'User Story 4: filtering by tags' do
+feature 'Signing in' do
   scenario 'user signup' do
     visit('/user/new')
     fill_in(:email, with: 'a@gmail.com')

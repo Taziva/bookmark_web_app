@@ -13,6 +13,9 @@ class Bookmarks < Sinatra::Base
     def current_user
       @current_user ||= User.get(session[:user_id])
     end
+    def encrypted(password)
+       BCrypt::Password.create(password)
+    end
   end
 
   get '/' do
@@ -30,7 +33,7 @@ class Bookmarks < Sinatra::Base
   end
 
   post '/links' do
-    user = User.first_or_create(email: params[:email], password: params[:password])
+    user = User.first_or_create(email: params[:email], password_digest: encrypted(params[:password]))
     session[:email] = params[:email]
     session[:user_id] = user.id
     redirect '/links'
@@ -60,6 +63,7 @@ class Bookmarks < Sinatra::Base
   get '/tags/:tag' do
     tag = Tag.first(name: session[:tag])
     @links = tag ? tag.links : []
+    @email = session[:email]
     erb :links
   end
 

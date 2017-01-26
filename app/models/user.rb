@@ -9,7 +9,7 @@ class User
 
   property :id, Serial
   property :email,     String
-  property :password,   BCryptHash
+  property :password_digest,   Text
 
   class << self
 

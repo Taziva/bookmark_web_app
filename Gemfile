@@ -5,6 +5,7 @@ group :sql do
   gem 'data_mapper'
   gem 'dm-postgres-adapter'
   gem 'dm-migrations'
+  gem 'dm-validations'
   gem 'pg'
 end
 group :test_dev do
