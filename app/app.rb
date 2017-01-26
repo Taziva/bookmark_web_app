@@ -2,7 +2,8 @@ ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
 require_relative 'datamapper_setup.rb'
-require 'bcrypt'
+require 'dm-validations'
+
 
 class Bookmarks < Sinatra::Base
 
@@ -12,9 +13,6 @@ class Bookmarks < Sinatra::Base
   helpers do
     def current_user
       @current_user ||= User.get(session[:user_id])
-    end
-    def encrypted(password)
-       BCrypt::Password.create(password)
     end
   end
 
@@ -33,7 +31,7 @@ class Bookmarks < Sinatra::Base
   end
 
   post '/links' do
-    user = User.first_or_create(email: params[:email], password_digest: encrypted(params[:password]))
+    user = User.first_or_create(email: params[:email], password_digest: params[:password])
     session[:email] = params[:email]
     session[:user_id] = user.id
     redirect '/links'
