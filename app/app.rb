@@ -8,7 +8,7 @@ class Bookmarks < Sinatra::Base
   enable :sessions
 
   get '/' do
-    'Hello Bookmarks!'
+    redirect '/links'
   end
 
   get '/links' do
