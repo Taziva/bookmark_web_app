@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby '2.2.3'
 
 group :sql do
@@ -7,7 +7,6 @@ group :sql do
   gem 'dm-migrations'
   gem 'pg'
 end
-
 group :test_dev do
   gem 'rspec'
   gem 'rspec-sinatra'
