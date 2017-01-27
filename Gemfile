@@ -19,3 +19,5 @@ group :test_dev do
   gem 'database_cleaner'
   gem 'bcrypt'
 end
+
+gem 'sinatra-flash'
