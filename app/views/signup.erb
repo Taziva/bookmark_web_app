@@ -1,13 +1,13 @@
 
 <form action='/user' method='post'>
   <label for='email'>Email:
-    <input type='text' name='email' value="<%= @user.email %>">
+    <input type='email' name='email' value="<%= @user.email %>" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$" required>
   </label>
   <label for='password'>Password:
-    <input type='text' name='password'>
+    <input type='text' name='password' required>
   </label>
   <label for='password_confirmation'>Confirm Password:
-    <input type='text' name='password_confirmation'>
+    <input type='text' name='password_confirmation' required>
   </label>
   <input type='submit' value='Submit'>
 </form>
